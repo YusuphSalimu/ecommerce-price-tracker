@@ -242,20 +242,28 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 👥 Team
 
-- **Developer**: [Your Name]
+- **Project Lead**: Yusuph Salimu
 - **Project**: Tanzania E-commerce Price Intelligence System
 
 ## 🙏 Acknowledgments
 
 - Tanzania National Bureau of Statistics (NBS) for reference data
-- Open source community for the amazing tools and libraries
+- Open source community for amazing tools and libraries
 - Tanzanian e-commerce platforms for providing valuable market data
 
-## 📞 Contact
+## 📞 Support & Contact
 
-- **Email**: your.email@example.com
-- **GitHub**: https://github.com/yourusername
-- **LinkedIn**: https://linkedin.com/in/yourprofile
+### 🆘 **Getting Help**
+- **Issues** - Report bugs via GitHub Issues
+- **Discussions** - Feature requests and questions
+- **Documentation** - Check this README first
+- **Community** - Join our developer community
+
+### 📧 **Contact**
+- **GitHub**: [@YusuphSalimu](https://github.com/YusuphSalimu)
+- **Email**: yusuphsaalim@gmail.com
+- **LinkedIn**: [Yusuph Salimu](https://www.linkedin.com/in/yusuph-salimu-7818333aa/)
+- **Project**: Tanzania E-commerce Price Tracker
 
 ---
 
