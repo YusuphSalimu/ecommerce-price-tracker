@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for Tanzania theme */
+.tanzania-gradient {
+  background: linear-gradient(135deg, #00a651 0%, #0066cc 100%);
+}
+
+.tanzania-card {
+  @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+}
+
+.tanzania-button {
+  @apply bg-tanzania-green hover:bg-green-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+.tanzania-button-secondary {
+  @apply bg-tanzania-blue hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Chart container */
+.chart-container {
+  @apply bg-white p-6 rounded-lg shadow-md;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  @apply animate-spin rounded-full h-8 w-8 border-b-2 border-tanzania-green;
+}
+
+/* Price trend up */
+.price-up {
+  @apply text-green-600 font-semibold;
+}
+
+/* Price trend down */
+.price-down {
+  @apply text-red-600 font-semibold;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #00a651;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #008942;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    @apply px-2;
+  }
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transform hover:scale-105 transition-transform duration-200;
+}
+
+/* Status indicators */
+.status-healthy {
+  @apply inline-block w-3 h-3 bg-green-500 rounded-full mr-2;
+}
+
+.status-unhealthy {
+  @apply inline-block w-3 h-3 bg-red-500 rounded-full mr-2;
+}

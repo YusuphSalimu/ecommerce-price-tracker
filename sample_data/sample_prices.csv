@@ -1,0 +1,61 @@
+product_name,category,price,location,platform,date,seller,product_url,quantity,unit
+Rice 5kg,Food,12000,Dar es Salaam,Jumia,2026-01-01,FoodStore TZ,https://jumia.co.tz/rice-5kg,5,kg
+Cooking Oil 1L,Food,8500,Dar es Salaam,Jumia,2026-01-01,SuperMart,https://jumia.co.tz/cooking-oil-1l,1,l
+Sugar 2kg,Food,6500,Dar es Salaam,Jumia,2026-01-01,SweetShop,https://jumia.co.tz/sugar-2kg,2,kg
+Maize Flour 2kg,Food,4800,Dar es Salaam,Jumia,2026-01-01,GrainStore,https://jumia.co.tz/maize-flour-2kg,2,kg
+Salt 1kg,Food,2500,Dar es Salaam,Jumia,2026-01-01,FoodStore TZ,https://jumia.co.tz/salt-1kg,1,kg
+Rice 5kg,Food,12500,Dar es Salaam,Jumia,2026-01-02,FoodStore TZ,https://jumia.co.tz/rice-5kg,5,kg
+Cooking Oil 1L,Food,8700,Dar es Salaam,Jumia,2026-01-02,SuperMart,https://jumia.co.tz/cooking-oil-1l,1,l
+Sugar 2kg,Food,6600,Dar es Salaam,Jumia,2026-01-02,SweetShop,https://jumia.co.tz/sugar-2kg,2,kg
+Maize Flour 2kg,Food,4900,Dar es Salaam,Jumia,2026-01-02,GrainStore,https://jumia.co.tz/maize-flour-2kg,2,kg
+Salt 1kg,Food,2500,Dar es Salaam,Jumia,2026-01-02,FoodStore TZ,https://jumia.co.tz/salt-1kg,1,kg
+Rice 5kg,Food,13000,Dodoma,Jumia,2026-01-01,FoodStore Dodoma,https://jumia.co.tz/rice-5kg,5,kg
+Cooking Oil 1L,Food,9200,Dodoma,Jumia,2026-01-01,SuperMart Dodoma,https://jumia.co.tz/cooking-oil-1l,1,l
+Sugar 2kg,Food,7000,Dodoma,Jumia,2026-01-01,SweetShop Dodoma,https://jumia.co.tz/sugar-2kg,2,kg
+Maize Flour 2kg,Food,5200,Dodoma,Jumia,2026-01-01,GrainStore Dodoma,https://jumia.co.tz/maize-flour-2kg,2,kg
+Salt 1kg,Food,2800,Dodoma,Jumia,2026-01-01,FoodStore Dodoma,https://jumia.co.tz/salt-1kg,1,kg
+Rice 5kg,Food,13200,Dodoma,Jumia,2026-01-02,FoodStore Dodoma,https://jumia.co.tz/rice-5kg,5,kg
+Cooking Oil 1L,Food,9400,Dodoma,Jumia,2026-01-02,SuperMart Dodoma,https://jumia.co.tz/cooking-oil-1l,1,l
+Sugar 2kg,Food,7100,Dodoma,Jumia,2026-01-02,SweetShop Dodoma,https://jumia.co.tz/sugar-2kg,2,kg
+Maize Flour 2kg,Food,5300,Dodoma,Jumia,2026-01-02,GrainStore Dodoma,https://jumia.co.tz/maize-flour-2kg,2,kg
+Salt 1kg,Food,2800,Dodoma,Jumia,2026-01-02,FoodStore Dodoma,https://jumia.co.tz/salt-1kg,1,kg
+Rice 5kg,Food,13500,Mwanza,Jumia,2026-01-01,FoodStore Mwanza,https://jumia.co.tz/rice-5kg,5,kg
+Cooking Oil 1L,Food,9500,Mwanza,Jumia,2026-01-01,SuperMart Mwanza,https://jumia.co.tz/cooking-oil-1l,1,l
+Sugar 2kg,Food,7200,Mwanza,Jumia,2026-01-01,SweetShop Mwanza,https://jumia.co.tz/sugar-2kg,2,kg
+Maize Flour 2kg,Food,5400,Mwanza,Jumia,2026-01-01,GrainStore Mwanza,https://jumia.co.tz/maize-flour-2kg,2,kg
+Salt 1kg,Food,2900,Mwanza,Jumia,2026-01-01,FoodStore Mwanza,https://jumia.co.tz/salt-1kg,1,kg
+Rice 5kg,Food,13700,Mwanza,Jumia,2026-01-02,FoodStore Mwanza,https://jumia.co.tz/rice-5kg,5,kg
+Cooking Oil 1L,Food,9700,Mwanza,Jumia,2026-01-02,SuperMart Mwanza,https://jumia.co.tz/cooking-oil-1l,1,l
+Sugar 2kg,Food,7300,Mwanza,Jumia,2026-01-02,SweetShop Mwanza,https://jumia.co.tz/sugar-2kg,2,kg
+Maize Flour 2kg,Food,5500,Mwanza,Jumia,2026-01-02,GrainStore Mwanza,https://jumia.co.tz/maize-flour-2kg,2,kg
+Salt 1kg,Food,2900,Mwanza,Jumia,2026-01-02,FoodStore Mwanza,https://jumia.co.tz/salt-1kg,1,kg
+Rice 5kg,Food,11800,Dar es Salaam,ZoomTanzania,2026-01-01,Zoom Foods,https://zoomtanzania.com/rice-5kg,5,kg
+Cooking Oil 1L,Food,8300,Dar es Salaam,ZoomTanzania,2026-01-01,Zoom Mart,https://zoomtanzania.com/cooking-oil-1l,1,l
+Sugar 2kg,Food,6300,Dar es Salaam,ZoomTanzania,2026-01-01,Zoom Sweet,https://zoomtanzania.com/sugar-2kg,2,kg
+Maize Flour 2kg,Food,4600,Dar es Salaam,ZoomTanzania,2026-01-01,Zoom Grains,https://zoomtanzania.com/maize-flour-2kg,2,kg
+Salt 1kg,Food,2400,Dar es Salaam,ZoomTanzania,2026-01-01,Zoom Foods,https://zoomtanzania.com/salt-1kg,1,kg
+Rice 5kg,Food,12000,Dar es Salaam,ZoomTanzania,2026-01-02,Zoom Foods,https://zoomtanzania.com/rice-5kg,5,kg
+Cooking Oil 1L,Food,8500,Dar es Salaam,ZoomTanzania,2026-01-02,Zoom Mart,https://zoomtanzania.com/cooking-oil-1l,1,l
+Sugar 2kg,Food,6400,Dar es Salaam,ZoomTanzania,2026-01-02,Zoom Sweet,https://zoomtanzania.com/sugar-2kg,2,kg
+Maize Flour 2kg,Food,4700,Dar es Salaam,ZoomTanzania,2026-01-02,Zoom Grains,https://zoomtanzania.com/maize-flour-2kg,2,kg
+Salt 1kg,Food,2400,Dar es Salaam,ZoomTanzania,2026-01-02,Zoom Foods,https://zoomtanzania.com/salt-1kg,1,kg
+Rice 5kg,Food,12800,Dodoma,ZoomTanzania,2026-01-01,Zoom Foods Dodoma,https://zoomtanzania.com/rice-5kg,5,kg
+Cooking Oil 1L,Food,9000,Dodoma,ZoomTanzania,2026-01-01,Zoom Mart Dodoma,https://zoomtanzania.com/cooking-oil-1l,1,l
+Sugar 2kg,Food,6800,Dodoma,ZoomTanzania,2026-01-01,Zoom Sweet Dodoma,https://zoomtanzania.com/sugar-2kg,2,kg
+Maize Flour 2kg,Food,5000,Dodoma,ZoomTanzania,2026-01-01,Zoom Grains Dodoma,https://zoomtanzania.com/maize-flour-2kg,2,kg
+Salt 1kg,Food,2700,Dodoma,ZoomTanzania,2026-01-01,Zoom Foods Dodoma,https://zoomtanzania.com/salt-1kg,1,kg
+Rice 5kg,Food,13000,Dodoma,ZoomTanzania,2026-01-02,Zoom Foods Dodoma,https://zoomtanzania.com/rice-5kg,5,kg
+Cooking Oil 1L,Food,9200,Dodoma,ZoomTanzania,2026-01-02,Zoom Mart Dodoma,https://zoomtanzania.com/cooking-oil-1l,1,l
+Sugar 2kg,Food,6900,Dodoma,ZoomTanzania,2026-01-02,Zoom Sweet Dodoma,https://zoomtanzania.com/sugar-2kg,2,kg
+Maize Flour 2kg,Food,5100,Dodoma,ZoomTanzania,2026-01-02,Zoom Grains Dodoma,https://zoomtanzania.com/maize-flour-2kg,2,kg
+Salt 1kg,Food,2700,Dodoma,ZoomTanzania,2026-01-02,Zoom Foods Dodoma,https://zoomtanzania.com/salt-1kg,1,kg
+Rice 5kg,Food,13300,Mwanza,ZoomTanzania,2026-01-01,Zoom Foods Mwanza,https://zoomtanzania.com/rice-5kg,5,kg
+Cooking Oil 1L,Food,9300,Mwanza,ZoomTanzania,2026-01-01,Zoom Mart Mwanza,https://zoomtanzania.com/cooking-oil-1l,1,l
+Sugar 2kg,Food,7000,Mwanza,ZoomTanzania,2026-01-01,Zoom Sweet Mwanza,https://zoomtanzania.com/sugar-2kg,2,kg
+Maize Flour 2kg,Food,5200,Mwanza,ZoomTanzania,2026-01-01,Zoom Grains Mwanza,https://zoomtanzania.com/maize-flour-2kg,2,kg
+Salt 1kg,Food,2800,Mwanza,ZoomTanzania,2026-01-01,Zoom Foods Mwanza,https://zoomtanzania.com/salt-1kg,1,kg
+Rice 5kg,Food,13500,Mwanza,ZoomTanzania,2026-01-02,Zoom Foods Mwanza,https://zoomtanzania.com/rice-5kg,5,kg
+Cooking Oil 1L,Food,9500,Mwanza,ZoomTanzania,2026-01-02,Zoom Mart Mwanza,https://zoomtanzania.com/cooking-oil-1l,1,l
+Sugar 2kg,Food,7100,Mwanza,ZoomTanzania,2026-01-02,Zoom Sweet Mwanza,https://zoomtanzania.com/sugar-2kg,2,kg
+Maize Flour 2kg,Food,5300,Mwanza,ZoomTanzania,2026-01-02,Zoom Grains Mwanza,https://zoomtanzania.com/maize-flour-2kg,2,kg
+Salt 1kg,Food,2800,Mwanza,ZoomTanzania,2026-01-02,Zoom Foods Mwanza,https://zoomtanzania.com/salt-1kg,1,kg

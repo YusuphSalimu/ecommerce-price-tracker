@@ -1,0 +1,42 @@
+# Data Science & Machine Learning
+pandas==2.1.4
+numpy==1.24.3
+scikit-learn==1.3.2
+matplotlib==3.8.2
+seaborn==0.13.0
+joblib==1.3.2
+
+# Web Scraping
+beautifulsoup4==4.12.2
+requests==2.31.0
+selenium==4.16.0
+scrapy==2.11.0
+lxml==4.9.3
+
+# Backend API
+fastapi==0.104.1
+uvicorn==0.24.0
+flask==3.0.0
+flask-cors==4.0.0
+python-dotenv==1.0.0
+
+# Database
+sqlalchemy==2.0.23
+sqlite3
+
+# Data Visualization
+plotly==5.17.0
+chart-studio==1.1.0
+
+# Time Series Analysis
+statsmodels==0.14.0
+prophet==1.1.5
+
+# Development & Testing
+pytest==7.4.3
+black==23.11.0
+flake8==6.1.0
+
+# Frontend Dependencies (for reference)
+# These will be installed in the frontend folder separately
+# react, react-dom, tailwindcss, recharts, etc.
