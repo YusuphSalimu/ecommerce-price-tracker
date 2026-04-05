@@ -528,79 +528,19 @@
             );
         };
 
-        // Market Insights Component
+        // Market Insights Component - Now with Real-Time Tracking
         const MarketInsights = ({ apiStatus }) => {
             const [insights, setInsights] = useState({
                 topGainers: [],
                 topLosers: [],
                 regional_analysis: []
             });
-
+            const [liveUpdates, setLiveUpdates] = useState([]);
             const [loading, setLoading] = useState(true);
             const [lastUpdate, setLastUpdate] = useState(new Date());
-            const [showGainers, setShowGainers] = useState(true);
+            const [isTracking, setIsTracking] = useState(true);
 
-            useEffect(() => {
-                loadInsights();
-                // Auto-refresh every 30 seconds
-                const interval = setInterval(() => {
-                    loadInsights();
-                    setLastUpdate(new Date());
-                }, 30000);
-
-                return () => clearInterval(interval);
-            }, []);
-
-            const showDetailedPopup = (item, type) => {
-                // Don't navigate, show modal instead
-                const modal = document.createElement('div');
-                modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4';
-                modal.innerHTML = `
-                    <div class="glass-card p-8 max-w-md w-full">
-                        <div class="flex items-center justify-between mb-6">
-                            <h3 class="text-2xl font-bold text-white">
-                                ${type === 'gainer' ? '📈' : '📉'} ${item.platform}
-                            </h3>
-                            <button onclick="this.closest('.fixed').remove()" class="text-gray-400 hover:text-white text-2xl">&times;</button>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center p-3 glass rounded-lg">
-                                <span class="text-gray-400">Current Price:</span>
-                                <span class="text-white font-bold text-lg">TZS ${item.price.toLocaleString()}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 glass rounded-lg">
-                                <span class="text-gray-400">Change:</span>
-                                <span class="font-bold text-lg ${type === 'gainer' ? 'text-green-400' : 'text-red-400'}">
-                                    ${type === 'gainer' ? '+' : ''}${item.change}%
-                                </span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 glass rounded-lg">
-                                <span class="text-gray-400">Volume:</span>
-                                <span class="text-white font-medium">${item.volume.toLocaleString()}</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 glass rounded-lg">
-                                <span class="text-gray-400">Market Cap:</span>
-                                <span class="text-white font-medium">TZS ${(item.market_cap / 1000000).toFixed(1)}M</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 glass rounded-lg">
-                                <span class="text-gray-400">Confidence:</span>
-                                <span class="text-white font-medium">${item.confidence}%</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 glass rounded-lg">
-                                <span class="text-gray-400">Trend:</span>
-                                <span class="text-white font-medium">${type === 'gainer' ? '📈' : '📉'} ${item.trend}</span>
-                            </div>
-                        </div>
-                        <div class="mt-6 text-center">
-                            <button onclick="this.closest('.fixed').remove()" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                `;
-                document.body.appendChild(modal);
-            };
-
+            // Load Market Insights Data
             const loadInsights = async () => {
                 try {
                     const response = await axios.get(`${API_BASE_URL}/market/insights`);
@@ -611,6 +551,39 @@
                     setLoading(false);
                 }
             };
+
+            // Load Live Updates (same as Real-Time Tracking)
+            const loadLiveUpdates = async () => {
+                try {
+                    const response = await axios.get(`${API_BASE_URL}/realtime/updates?limit=20`);
+                    setLiveUpdates(response.data.updates || []);
+                } catch (error) {
+                    console.error('Error fetching live updates:', error);
+                }
+            };
+
+            useEffect(() => {
+                loadInsights();
+                loadLiveUpdates();
+                
+                // Auto-refresh every 30 seconds for insights
+                const insightsInterval = setInterval(() => {
+                    loadInsights();
+                    setLastUpdate(new Date());
+                }, 30000);
+
+                // Auto-refresh every 2 seconds for live updates
+                const liveInterval = setInterval(() => {
+                    if (isTracking) {
+                        loadLiveUpdates();
+                    }
+                }, 2000);
+
+                return () => {
+                    clearInterval(insightsInterval);
+                    clearInterval(liveInterval);
+                };
+            }, [isTracking]);
 
             if (loading) {
                 return (
@@ -625,16 +598,69 @@
                     <div className="text-center">
                         <h1 className="text-5xl font-bold text-white mb-4 text-shadow">Market Insights</h1>
                         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                            Deep analytics and trends across Tanzania's e-commerce landscape
+                            Deep analytics and real-time tracking across Tanzania's e-commerce landscape
                         </p>
                         <div className="flex items-center justify-center space-x-4 mt-4">
                             <div className="flex items-center space-x-2">
-                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                <span className="text-green-400 text-sm">Live Data</span>
+                                <div className={`w-3 h-3 rounded-full ${isTracking ? 'bg-green-500 pulse-animation' : 'bg-red-500'}`} />
+                                <span className="text-white font-medium">
+                                    {isTracking ? 'Live Tracking' : 'Paused'}
+                                </span>
                             </div>
                             <div className="text-gray-400 text-sm">
                                 Last Updated: {lastUpdate.toLocaleTimeString()}
                             </div>
+                        </div>
+                    </div>
+
+                    {/* Live Tracking Control */}
+                    <div className="glass-card p-6">
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center space-x-4">
+                                <div className={`w-3 h-3 rounded-full ${isTracking ? 'bg-green-500 pulse-animation' : 'bg-red-500'}`} />
+                                <span className="text-white font-medium">
+                                    {isTracking ? 'Live Market Tracking' : 'Tracking Paused'}
+                                </span>
+                            </div>
+                            <button
+                                onClick={() => setIsTracking(!isTracking)}
+                                className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                                    isTracking 
+                                        ? 'bg-red-500/20 border border-red-500/30 text-red-400' 
+                                        : 'bg-green-500/20 border border-green-500/30 text-green-400'
+                                }`}
+                            >
+                                {isTracking ? 'Pause Tracking' : 'Resume Tracking'}
+                            </button>
+                        </div>
+
+                        {/* Live Updates Feed - Same as Real-Time Tracking */}
+                        <div className="space-y-3 max-h-96 overflow-y-auto custom-scrollbar">
+                            {liveUpdates.map((update, index) => (
+                                <div key={index} className="glass p-4 rounded-xl border border-white/10 slide-up">
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex items-center space-x-4">
+                                            <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium">
+                                                {update.platform}
+                                            </span>
+                                            <div>
+                                                <h4 className="text-white font-medium">{update.product}</h4>
+                                                <p className="text-gray-400 text-sm">{update.location}</p>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-xl font-bold text-white">
+                                                TZS {update.price?.toLocaleString()}
+                                            </p>
+                                            <p className={`text-sm font-medium ${
+                                                update.change > 0 ? 'text-green-400' : 'text-red-400'
+                                            }`}>
+                                                {update.change > 0 ? '+' : ''}{update.change}%
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
@@ -661,35 +687,28 @@
                             </div>
                             <div className="text-center">
                                 <div className="text-3xl font-bold text-yellow-400">
-                                    {loading ? '⏳' : '✅'}
+                                    {liveUpdates.length}
                                 </div>
-                                <div className="text-sm text-gray-400">Status</div>
+                                <div className="text-sm text-gray-400">Live Updates</div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Top Gainers - Always Visible */}
-                    <div className="glass-card p-8">
-                        <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-2xl font-bold text-white">
-                                📈 Top 5 Gainers
-                            </h2>
-                            <div className="flex items-center space-x-2">
+                    {/* Top Gainers - Show if data exists */}
+                    {insights.topGainers && insights.topGainers.length > 0 && (
+                        <div className="glass-card p-8">
+                            <div className="flex items-center justify-between mb-6">
+                                <h2 className="text-2xl font-bold text-white">
+                                    📈 Top 5 Gainers
+                                </h2>
                                 <div className="flex items-center space-x-2">
-                                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                    <span className="text-green-400 text-sm">Live Data</span>
+                                    <div className="flex items-center space-x-2">
+                                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                        <span className="text-green-400 text-sm">Live Data</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {loading ? (
-                            <div className="flex justify-center items-center py-12">
-                                <div className="text-center">
-                                    <div className="w-12 h-12 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                                    <p className="text-gray-400">Loading top gainers...</p>
-                                </div>
-                            </div>
-                        ) : (
                             <div className="overflow-x-auto">
                                 <table className="w-full">
                                     <thead>
@@ -747,31 +766,24 @@
                                     </tbody>
                                 </table>
                             </div>
-                        )}
-                    </div>
-
-                    {/* Top Losers - Always Visible */}
-                    <div className="glass-card p-8">
-                        <div className="flex items-center justify-between mb-6">
-                            <h2 className="text-2xl font-bold text-white">
-                                📉 Top 5 Losers
-                            </h2>
-                            <div className="flex items-center space-x-2">
-                                <div className="flex items-center space-x-2">
-                                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                                    <span className="text-red-400 text-sm">Live Data</span>
-                                </div>
-                            </div>
                         </div>
+                    )}
 
-                        {loading ? (
-                            <div className="flex justify-center items-center py-12">
-                                <div className="text-center">
-                                    <div className="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                                    <p className="text-gray-400">Loading top losers...</p>
+                    {/* Top Losers - Show if data exists */}
+                    {insights.topLosers && insights.topLosers.length > 0 && (
+                        <div className="glass-card p-8">
+                            <div className="flex items-center justify-between mb-6">
+                                <h2 className="text-2xl font-bold text-white">
+                                    📉 Top 5 Losers
+                                </h2>
+                                <div className="flex items-center space-x-2">
+                                    <div className="flex items-center space-x-2">
+                                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                                        <span className="text-red-400 text-sm">Live Data</span>
+                                    </div>
                                 </div>
                             </div>
-                        ) : (
+
                             <div className="overflow-x-auto">
                                 <table className="w-full">
                                     <thead>
@@ -829,8 +841,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                        )}
-                    </div>
+                        </div>
+                    )}
 
                     {/* Regional Analysis */}
                     <div className="glass-card p-8">
