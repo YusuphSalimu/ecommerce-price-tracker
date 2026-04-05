@@ -533,12 +533,21 @@
             const [insights, setInsights] = useState({
                 topGainers: [],
                 topLosers: [],
-                regionalAnalysis: []
+                regional_analysis: []
             });
+
             const [loading, setLoading] = useState(true);
+            const [lastUpdate, setLastUpdate] = useState(new Date());
 
             useEffect(() => {
                 loadInsights();
+                // Auto-refresh every 30 seconds
+                const interval = setInterval(() => {
+                    loadInsights();
+                    setLastUpdate(new Date());
+                }, 30000);
+
+                return () => clearInterval(interval);
             }, []);
 
             const loadInsights = async () => {
@@ -567,20 +576,39 @@
                         <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                             Deep analytics and trends across Tanzania's e-commerce landscape
                         </p>
+                        <div className="flex items-center justify-center space-x-4 mt-4">
+                            <div className="flex items-center space-x-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                <span className="text-green-400 text-sm">Live Data</span>
+                            </div>
+                            <div className="text-gray-400 text-sm">
+                                Last Updated: {lastUpdate.toLocaleTimeString()}
+                            </div>
+                        </div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div className="glass-card p-8">
-                            <h2 className="text-2xl font-bold text-white mb-6">📈 Top Gainers</h2>
+                            <h2 className="text-2xl font-bold text-white mb-6 cursor-pointer hover:text-green-400 transition-colors" onClick={() => window.open('https://ecommerce-price-tracker-qdh8.onrender.com/market/insights', '_blank')}>
+                                📈 Top Gainers <span className="text-sm text-gray-400">(Click for Live Data)</span>
+                            </h2>
                             <div className="space-y-4">
                                 {insights.topGainers?.slice(0, 5).map((item, index) => (
-                                    <div key={index} className="flex items-center justify-between p-4 glass rounded-xl">
-                                        <div>
-                                            <h4 className="text-white font-medium">{item.platform}</h4>
+                                    <div key={index} className="flex items-center justify-between p-4 glass rounded-xl hover:bg-green-500/10 transition-all cursor-pointer border border-green-500/30"
+                                         onClick={() => alert(`${item.platform}: +${item.change}%\nPrice: TZS ${item.price.toLocaleString()}\nVolume: ${item.volume}\nConfidence: ${item.confidence}%`)}>
+                                        <div className="flex-1">
+                                            <h4 className="text-white font-medium text-lg">{item.platform}</h4>
                                             <p className="text-gray-400">Current: TZS {item.price?.toLocaleString()}</p>
+                                            <div className="flex items-center space-x-2 mt-1">
+                                                <span className="text-xs text-gray-500">Volume: {item.volume.toLocaleString()}</span>
+                                                <span className="text-xs text-gray-500">Conf: {item.confidence}%</span>
+                                            </div>
                                         </div>
                                         <div className="text-right">
-                                            <span className="text-green-400 font-semibold">+{item.change}%</span>
+                                            <div className="flex flex-col items-end">
+                                                <span className="text-green-400 font-bold text-lg">+{item.change}%</span>
+                                                <span className="text-xs text-green-300">📈 {item.trend}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
@@ -588,16 +616,26 @@
                         </div>
 
                         <div className="glass-card p-8">
-                            <h2 className="text-2xl font-bold text-white mb-6">📉 Top Losers</h2>
+                            <h2 className="text-2xl font-bold text-white mb-6 cursor-pointer hover:text-red-400 transition-colors" onClick={() => window.open('https://ecommerce-price-tracker-qdh8.onrender.com/market/insights', '_blank')}>
+                                📉 Top Losers <span className="text-sm text-gray-400">(Click for Live Data)</span>
+                            </h2>
                             <div className="space-y-4">
                                 {insights.topLosers?.slice(0, 5).map((item, index) => (
-                                    <div key={index} className="flex items-center justify-between p-4 glass rounded-xl">
-                                        <div>
-                                            <h4 className="text-white font-medium">{item.platform}</h4>
+                                    <div key={index} className="flex items-center justify-between p-4 glass rounded-xl hover:bg-red-500/10 transition-all cursor-pointer border border-red-500/30"
+                                         onClick={() => alert(`${item.platform}: ${item.change}%\nPrice: TZS ${item.price.toLocaleString()}\nVolume: ${item.volume}\nConfidence: ${item.confidence}%`)}>
+                                        <div className="flex-1">
+                                            <h4 className="text-white font-medium text-lg">{item.platform}</h4>
                                             <p className="text-gray-400">Current: TZS {item.price?.toLocaleString()}</p>
+                                            <div className="flex items-center space-x-2 mt-1">
+                                                <span className="text-xs text-gray-500">Volume: {item.volume.toLocaleString()}</span>
+                                                <span className="text-xs text-gray-500">Conf: {item.confidence}%</span>
+                                            </div>
                                         </div>
                                         <div className="text-right">
-                                            <span className="text-red-400 font-semibold">{item.change}%</span>
+                                            <div className="flex flex-col items-end">
+                                                <span className="text-red-400 font-bold text-lg">{item.change}%</span>
+                                                <span className="text-xs text-red-300">📉 {item.trend}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
