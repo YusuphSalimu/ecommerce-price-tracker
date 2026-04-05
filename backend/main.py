@@ -124,7 +124,7 @@ def predict_price():
         return jsonify({"error": str(e)}), 400
 
 @app.route('/api/market-insights')
-def get_market_insights():
+def get_market_insights_old():
     return jsonify({
         "total_products": len(PRODUCTS),
         "total_platforms": len(TANZANIA_PLATFORMS),
