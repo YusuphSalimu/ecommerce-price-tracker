@@ -638,99 +638,70 @@
                         </div>
                     </div>
 
-                    <div className="text-center mb-8">
-                        <div className="inline-flex items-center space-x-4 bg-white/10 rounded-full px-6 py-3">
-                            <button 
-                                onClick={() => setShowGainers(!showGainers)}
-                                className={`px-6 py-2 rounded-full font-medium transition-all ${
-                                    showGainers 
-                                        ? 'bg-green-500 text-white' 
-                                        : 'bg-white/20 text-gray-300 hover:bg-white/30'
-                                }`}
-                            >
-                                📈 Top Gainers
-                            </button>
-                            <button 
-                                onClick={() => setShowGainers(false)}
-                                className={`px-6 py-2 rounded-full font-medium transition-all ${
-                                    !showGainers 
-                                        ? 'bg-red-500 text-white' 
-                                        : 'bg-white/20 text-gray-300 hover:bg-white/30'
-                                }`}
-                            >
-                                📉 Top Losers
-                            </button>
+                    <div className="glass-card p-8">
+                        <h2 className="text-2xl font-bold text-white mb-6 cursor-pointer hover:text-green-400 transition-colors" onClick={() => window.open('https://ecommerce-price-tracker-qdh8.onrender.com/market/insights', '_blank')}>
+                            📈 Top Gainers <span className="text-sm text-gray-400">(Live Data)</span>
+                        </h2>
+                        <div className="space-y-4">
+                            {loading ? (
+                                <div className="flex justify-center items-center py-8">
+                                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+                                </div>
+                            ) : (
+                                insights.topGainers?.slice(0, 5).map((item, index) => (
+                                    <div key={index} className="flex items-center justify-between p-4 glass rounded-xl hover:bg-green-500/10 transition-all cursor-pointer border border-green-500/30"
+                                         onClick={() => showDetailedPopup(item, 'gainer')}>
+                                        <div className="flex-1">
+                                            <h4 className="text-white font-medium text-lg">{item.platform}</h4>
+                                            <p className="text-gray-400">Current: TZS {item.price?.toLocaleString()}</p>
+                                            <div className="flex items-center space-x-2 mt-1">
+                                                <span className="text-xs text-gray-500">Volume: {item.volume.toLocaleString()}</span>
+                                                <span className="text-xs text-gray-500">Conf: {item.confidence}%</span>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="flex flex-col items-end">
+                                                <span className="text-green-400 font-bold text-lg">+{item.change}%</span>
+                                                <span className="text-xs text-green-300">📈 {item.trend}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        {showGainers ? (
-                            <div className="glass-card p-8">
-                                <h2 className="text-2xl font-bold text-white mb-6 cursor-pointer hover:text-green-400 transition-colors" onClick={() => window.open('https://ecommerce-price-tracker-qdh8.onrender.com/market/insights', '_blank')}>
-                                    📈 Top Gainers <span className="text-sm text-gray-400">(Live Data)</span>
-                                </h2>
-                                <div className="space-y-4">
-                                    {loading ? (
-                                        <div className="flex justify-center items-center py-8">
-                                            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
-                                        </div>
-                                    ) : (
-                                        insights.topGainers?.slice(0, 5).map((item, index) => (
-                                            <div key={index} className="flex items-center justify-between p-4 glass rounded-xl hover:bg-green-500/10 transition-all cursor-pointer border border-green-500/30"
-                                                 onClick={() => showDetailedPopup(item, 'gainer')}>
-                                                <div className="flex-1">
-                                                    <h4 className="text-white font-medium text-lg">{item.platform}</h4>
-                                                    <p className="text-gray-400">Current: TZS {item.price?.toLocaleString()}</p>
-                                                    <div className="flex items-center space-x-2 mt-1">
-                                                        <span className="text-xs text-gray-500">Volume: {item.volume.toLocaleString()}</span>
-                                                        <span className="text-xs text-gray-500">Conf: {item.confidence}%</span>
-                                                    </div>
-                                                </div>
-                                                <div className="text-right">
-                                                    <div className="flex flex-col items-end">
-                                                        <span className="text-green-400 font-bold text-lg">+{item.change}%</span>
-                                                        <span className="text-xs text-green-300">📈 {item.trend}</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        ))
-                                    )}
+                    <div className="glass-card p-8">
+                        <h2 className="text-2xl font-bold text-white mb-6 cursor-pointer hover:text-red-400 transition-colors" onClick={() => window.open('https://ecommerce-price-tracker-qdh8.onrender.com/market/insights', '_blank')}>
+                            📉 Top Losers <span className="text-sm text-gray-400">(Live Data)</span>
+                        </h2>
+                        <div className="space-y-4">
+                            {loading ? (
+                                <div className="flex justify-center items-center py-8">
+                                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500"></div>
                                 </div>
-                            </div>
-                        ) : (
-                            <div className="glass-card p-8">
-                                <h2 className="text-2xl font-bold text-white mb-6 cursor-pointer hover:text-red-400 transition-colors" onClick={() => window.open('https://ecommerce-price-tracker-qdh8.onrender.com/market/insights', '_blank')}>
-                                    📉 Top Losers <span className="text-sm text-gray-400">(Live Data)</span>
-                                </h2>
-                                <div className="space-y-4">
-                                    {loading ? (
-                                        <div className="flex justify-center items-center py-8">
-                                            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-red-500"></div>
-                                        </div>
-                                    ) : (
-                                        insights.topLosers?.slice(0, 5).map((item, index) => (
-                                            <div key={index} className="flex items-center justify-between p-4 glass rounded-xl hover:bg-red-500/10 transition-all cursor-pointer border border-red-500/30"
-                                                 onClick={() => showDetailedPopup(item, 'loser')}>
-                                                <div className="flex-1">
-                                                    <h4 className="text-white font-medium text-lg">{item.platform}</h4>
-                                                    <p className="text-gray-400">Current: TZS {item.price?.toLocaleString()}</p>
-                                                    <div className="flex items-center space-x-2 mt-1">
-                                                        <span className="text-xs text-gray-500">Volume: {item.volume.toLocaleString()}</span>
-                                                        <span className="text-xs text-gray-500">Conf: {item.confidence}%</span>
-                                                    </div>
-                                                </div>
-                                                <div className="text-right">
-                                                    <div className="flex flex-col items-end">
-                                                        <span className="text-red-400 font-bold text-lg">{item.change}%</span>
-                                                        <span className="text-xs text-red-300">📉 {item.trend}</span>
-                                                    </div>
-                                                </div>
+                            ) : (
+                                insights.topLosers?.slice(0, 5).map((item, index) => (
+                                    <div key={index} className="flex items-center justify-between p-4 glass rounded-xl hover:bg-red-500/10 transition-all cursor-pointer border border-red-500/30"
+                                         onClick={() => showDetailedPopup(item, 'loser')}>
+                                        <div className="flex-1">
+                                            <h4 className="text-white font-medium text-lg">{item.platform}</h4>
+                                            <p className="text-gray-400">Current: TZS {item.price?.toLocaleString()}</p>
+                                            <div className="flex items-center space-x-2 mt-1">
+                                                <span className="text-xs text-gray-500">Volume: {item.volume.toLocaleString()}</span>
+                                                <span className="text-xs text-gray-500">Conf: {item.confidence}%</span>
                                             </div>
-                                        ))
-                                    )}
-                                </div>
-                            </div>
-                        )}
+                                        </div>
+                                        <div className="text-right">
+                                            <div className="flex flex-col items-end">
+                                                <span className="text-red-400 font-bold text-lg">{item.change}%</span>
+                                                <span className="text-xs text-red-300">📉 {item.trend}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                            )}
+                        </div>
                     </div>
 
                     <div className="glass-card p-8">
